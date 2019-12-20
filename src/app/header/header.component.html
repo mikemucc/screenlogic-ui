@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span>
+      <div>
+        ScreenLogic
+      </div>
+      <div class='mat-caption'>
+        {{slMetaInfo?.server?.name}}
+      </div>
+      </span>
+      <span class="spacer"></span> 
+      <mat-icon *ngIf="slMetaInfo?.serviceMode" matTooltip="Outdoor Panel is in Service Mode — all controls are disabled" class="icon" aria-hidden="false" aria-label="Service Mode">build</mat-icon>
+      <mat-icon *ngIf="slMetaInfo?.freezeMode===1" matTooltip="Pool is in Freeze Protect mode"  class="icon" aria-hidden="false" aria-label="Freeze Mode">ac_unit</mat-icon>
+      <mat-icon *ngIf="slMetaInfo?.activeAlarms >= 1" matTooltip="Active Alarms: {{slMetaInfo.activeAlarms}}" class="icon" aria-hidden="false" aria-label="Warning">warning</mat-icon>
+      <span class='short-spacer'></span>
+      <span>
+        <div>
+        {{slMetaInfo?.airTemp}}°{{slMetaInfo?.tempScale}}
+      </div>
+      <div class='mat-caption'>
+        Outside
+      </div>
+      </span>
+    </mat-toolbar-row>
+</mat-toolbar>

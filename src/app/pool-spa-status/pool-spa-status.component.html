@@ -1,0 +1,88 @@
+<mat-grid-list cols="2" rowHeight="300px" gutterSize="10px">
+  <mat-grid-tile *ngFor="let body of poolSpaInfo" colspan="1" rowspan="1">
+    <mat-card class="poolspa-card">
+      <mat-card-header>
+        <div mat-card-avatar class="avatar">
+          <div *ngIf="body.name === 'pool'">
+            <button disableRipple='true' mat-icon-button aria-label="Power" class="header-button">
+            <mat-icon
+              class="icon"
+              [ngClass]="{ 'body-active': body.active }"
+              aria-hidden="false"
+              aria-label="Pool"
+              >pool</mat-icon
+            >
+            </button>
+          </div>
+          <div *ngIf="body.name === 'spa'">
+            <button disableRipple='true' mat-icon-button aria-label="Power" class="header-button">
+            <mat-icon
+              class="icon"
+              [ngClass]="{ 'body-active': body.active }"
+              aria-hidden="false"
+              aria-label="Pool"
+              >hot_tub</mat-icon
+            >
+            </button>
+          </div>
+        </div>
+        <mat-card-title>{{ body.name | titlecase }}</mat-card-title>
+        <mat-card-subtitle
+          >{{ body.waterTemp }}°{{ body.tempScale }}</mat-card-subtitle
+        >
+        <div class="spacer"></div>
+
+        <!-- <mat-icon class="water-blue" aria-hidden="false" aria-label="waves">waves</mat-icon> -->
+        <div class="header-space"></div>
+        <div class="header-space"></div>
+        <button mat-icon-button disableRipple='true' aria-label="Heater Status" class="header-button">
+          <mat-icon
+            [ngClass]="{ 'heater-active': body.heater.active }"
+            aria-hidden="false"
+            aria-label="Heater Status"
+            matTooltip="Heater Mode: {{body.heater.activeType}}"
+            >whatshot</mat-icon
+          >
+        </button>
+        <div class="header-space"></div>
+        <button mat-icon-button aria-label="Power" class="header-button">
+          <mat-icon
+            [ngClass]="{ 'power-active': body.active }"
+            aria-hidden="false"
+            aria-label="body-active"
+            (click)="bodyPowerToggle(body.active, body.circuitId)"
+            matTooltip='{{body.name | titlecase}} is {{body.active ? "running" : "not running"}}'
+            >power_settings_new</mat-icon
+          >
+        </button>
+      </mat-card-header>
+      <mat-card-actions class="actions-line">
+        <div *ngFor="let circuit of circuitsInfo">
+          <div
+            *ngIf="
+              (circuit.interface === body.interfaceId ||
+                circuit.interface === body.altInterfaceId) &&
+              circuit.name.toLowerCase() != body.name.toLowerCase()
+            "
+            class="control-button"
+          >
+            <mat-slide-toggle
+              (change)="toggle($event, circuit.circuitId)"
+              disableRipple="false"
+              name="{{ circuit.name }}"
+              color="primary"
+              checked="{{ circuit.active }}"
+            >
+            </mat-slide-toggle>
+            <br />
+            {{ circuit.name }}
+          </div>
+        </div>
+      </mat-card-actions>
+      <br />
+      <mat-card-content>
+        <app-heater-controls [body]="body"></app-heater-controls>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

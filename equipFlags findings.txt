@@ -1,0 +1,33 @@
+24: No Solar (Heat Pump Present) - Baseline
+25: Solar Present (+1)
+27: Solar Is Heat Pump (+2)
+27: UltraTemp or ThermaFlo (Turns on Solar & Solar Is Heat Pump)
+28: Chlorinator Present (+4)
+29: Chlorinator + Solar 
+31: Chlorinator + Solar is Heat Pump
+
+--- Cooling Present
+8219: Has Cooling (Turns on Solar Present, Solar Is HP, UltraTemp or ThermaFlo) (+8192 (+ 1 for Solar, + 2 for Solar is HP))
+8223: Has Cooling + Chlorinator Present (Turns on Solar Present, Solar Is HP, UltraTemp or ThermaFlo)
+
+--- IntelliChem Present
+32792: IntelliChem Present (+32768)
+32793: IC + Solar
+32795: IC + Solar + Solar Is heatpump
+32796: IntelliChem + Chlorinator
+32797: IntelliChem + Chlorinator + Solar
+32799 : IntelliChem + Chlorinator + Solar + Solar is HP
+40991 : IntelliChem + Chlorinator + Solar + Cooling
+
+Binary Representations
+| Setting | Binary | Notes|
+|---------|--------|-------| 
+Heater | 00000000011000 | Baseline
++ Solar | 00000000011001 | |
++ Solar + Solar is HP | 00000000011011| |
++ Chlorinator | 00000000011100 | |
++ Chlorinator + Solar | 00000000011101| |
++ Ch + So + SoisHP | 00000000011111 | |
++ Cooling (+ So + SoisHP) | 00100000011011
++ Cooling + Ch | 00100000011111 | |
+IntelliChem + Ch + Cooling + Solar   | 1010000000011111 | |
