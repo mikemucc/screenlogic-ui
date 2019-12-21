@@ -18,17 +18,13 @@ export class PoolSpaStatusComponent implements OnInit {
     } else {
       newState = 0
     }
-    // this.poolSpaData.changeCircuitStatus(circuitId, newState).subscribe(response => {});
   }
   public toggle(event: MatSlideToggleChange, circuitId: Number) {
-      // console.log(circuitId)
-      // console.log('toggle', event.checked);
       if(event.checked){
         var newState = 1
       } else {
         newState = 0
       }
-      // console.log(circuitId + ' ' + newState)
       this.poolSpaData.changeCircuitStatus(circuitId, newState).subscribe(response => {});      
   }
   constructor(
@@ -43,12 +39,12 @@ export class PoolSpaStatusComponent implements OnInit {
   getPoolSpaInfo(): void {
     this.poolSpaData.getPoolSpaInfo()
       .subscribe((response: PoolSpaInfo[]) => {
-        console.log(response);
+        // console.log(response);
         this.poolSpaInfo = response;
       }, (error) => {
         console.log('error', error);
       }, () => {
-        console.log('complete');
+        // console.log('complete');
       });
   }
   getConfigCircuitsArray(): void{
@@ -58,7 +54,7 @@ export class PoolSpaStatusComponent implements OnInit {
       }, (error) => {
         console.log('error', error);
       }, () => {
-        console.log('complete');
+        // console.log('complete');
       })
   }
 }

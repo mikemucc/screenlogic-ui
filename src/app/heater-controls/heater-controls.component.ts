@@ -20,17 +20,10 @@ export class HeaterControlsComponent implements OnInit {
   @Input() body: PoolSpaInfo;
   private tempSliderMoved(event: MatSliderChange, bodyName: String){
     var eventlog: String = bodyName +  " setpoint slider changed to " + event.value
-    // console.log(eventlog)
     this.poolSpaData.setHeatSetPoint(bodyName, event.value).subscribe(response => {});
-    // console.log(event.value)
-    // console.log(bodyId)
   }
   public heatModeToggle(bodyName: String, heaterMode: Number) {
-    // console.log(heaterMode);
-    // console.log(bodyName);
-    this.poolSpaData.setHeatMode(bodyName, heaterMode).subscribe(response => {});
-    // console.log(circuitId + ' ' + newState)
-    // this.poolSpaData.changeCircuitStatus(circuitId, newState).subscribe(response => {});      
+    this.poolSpaData.setHeatMode(bodyName, heaterMode).subscribe(response => {}); 
 }
   constructor(
     private poolSpaData: ScreenlogicApiService

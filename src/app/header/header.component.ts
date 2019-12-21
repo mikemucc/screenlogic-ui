@@ -14,18 +14,18 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getMetaInfo()
+    setInterval(() =>this.getMetaInfo(), 2500);
   }
 
   getMetaInfo(): void {
     this.slMetaData.getMetaInfo()
       .subscribe((response: SlMetaData) => {
-        console.log(response);
+        // console.log(response);
         this.slMetaInfo = response;
       }, (error) => {
         console.log('error', error);
       }, () => {
-        console.log('complete');
+        // console.log('complete');
       })
   }
 }
