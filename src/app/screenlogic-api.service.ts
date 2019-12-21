@@ -166,8 +166,6 @@ export class ScreenlogicApiService {
     const url = this.slApiUrl + '/' + circuit + '/' + state
     console.log('Sending PUT to ' + url)
     var returnmessage = this.http.put(url, '', this.httpOptions)
-    .pipe(
-      catchError(this.handleError<any>('updateHero')))
     console.log(returnmessage)
     return returnmessage
   }

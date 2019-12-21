@@ -16,7 +16,7 @@ import { MatButtonToggleChange } from '@angular/material/button-toggle'
 })
 export class HeaterControlsComponent implements OnInit {
   equipmentConfig: EquipmentConfig;
-  equipmentList: any
+  // equipmentList: any
   @Input() body: PoolSpaInfo;
   private tempSliderMoved(event: MatSliderChange, bodyName: String){
     var eventlog: String = bodyName +  " setpoint slider changed to " + event.value
@@ -37,17 +37,5 @@ export class HeaterControlsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getEquipInfo()
-  }
-  getEquipInfo(): void {
-    this.poolSpaData.getEquipmentConfig()
-      .subscribe((response: EquipmentConfig) => {
-        // console.log(response);
-        this.equipmentConfig = response;
-      }, (error) => {
-        console.log('error', error);
-      }, () => {
-        console.log('complete');
-      });
   }
 }

@@ -17,17 +17,18 @@
   {{body.heater.tempScale}}
 <span class=temp-display>{{body.heater.setpoint?.current}}°{{body.tempScale}}</span>
 <span class="local-spacer"></span>
+
 <mat-button-toggle-group #group='matButtonToggleGroup' (change)='heatModeToggle(body.name, group.value)'>
-    <mat-button-toggle checked='{{body.heater?.modeCode===0}}' value="0" aria-label="Heater Off">
+    <mat-button-toggle class='heater-toggle-button' checked='{{body.heater?.modeCode===0}}' value="0" aria-label="Heater Off">
       Off
     </mat-button-toggle>
-    <mat-button-toggle checked='{{body.heater?.modeCode===3}}' ng-show='equipmentConfig?.heater'  value="3" aria-label="Heater On" ng-cloak>
+    <mat-button-toggle class='heater-toggle-button' *ngIf="body.heater.equipPresent.heater" checked='{{body.heater?.modeCode===3}}' value="3" aria-label="Heater On">
       Heater
     </mat-button-toggle>
-    <mat-button-toggle checked='{{body.heater?.modeCode===1}}' ng-show='equipmentConfig?.solar' value="1" aria-label="Solar On" ng-cloak>
+    <mat-button-toggle class='heater-toggle-button' checked='{{body.heater?.modeCode===1}}' *ngIf='body.heater.equipPresent.solar' value="1" aria-label="Solar On">
       Solar
     </mat-button-toggle>
-    <mat-button-toggle checked='{{body.heater?.modeCode===2}}' *ngIf='equipmentConfig?.solar' value="2" aria-label="Solar Pref." ng-cloak>
+    <mat-button-toggle class='heater-toggle-button' checked='{{body.heater?.modeCode===2}}' *ngIf='equipmentConfig?.solarisheater' value="2" aria-label="Solar Pref.">
       Solar Pref.
     </mat-button-toggle>
 </mat-button-toggle-group>
