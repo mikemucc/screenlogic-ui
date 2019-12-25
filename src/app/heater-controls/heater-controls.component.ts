@@ -18,9 +18,15 @@ export class HeaterControlsComponent implements OnInit {
   equipmentConfig: EquipmentConfig;
   // equipmentList: any
   @Input() body: PoolSpaInfo;
+  @Input() tempSliderValue: number;
   private tempSliderMoved(event: MatSliderChange, bodyName: String){
     var eventlog: String = bodyName +  " setpoint slider changed to " + event.value
     this.poolSpaData.setHeatSetPoint(bodyName, event.value).subscribe(response => {});
+    console.log(eventlog)
+  }
+  private directSetSetpoint(setpointValue: number, bodyName: String){
+    this.tempSliderValue = setpointValue;
+    this.poolSpaData.setHeatSetPoint(bodyName, setpointValue).subscribe(response => {});
   }
   public heatModeToggle(bodyName: String, heaterMode: Number) {
     this.poolSpaData.setHeatMode(bodyName, heaterMode).subscribe(response => {}); 

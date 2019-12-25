@@ -9,9 +9,15 @@
       </div>
       </span>
       <span class="spacer"></span> 
-      <mat-icon>timer</mat-icon>
-      <mat-icon *ngIf="slMetaInfo?.serviceMode" matTooltip="Outdoor Panel is in Service Mode — all controls are disabled" class="icon" aria-hidden="false" aria-label="Service Mode">build</mat-icon>
-      <mat-icon *ngIf="slMetaInfo?.freezeMode===1" matTooltip="Pool is in Freeze Protect mode"  class="icon" aria-hidden="false" aria-label="Freeze Mode">ac_unit</mat-icon>
+      <fa-icon *ngIf="slMetaInfo?.lightsOn" [icon]="['fas', 'lightbulb']" title="Pool Lights on"></fa-icon>
+      <span class='short-spacer' *ngIf="slMetaInfo?.cleanerDelay" ></span>
+      <fa-icon  [icon]="['fas', 'clock']" *ngIf="slMetaInfo?.cleanerDelay" title="Cleaner activated but on delay"></fa-icon>
+      <span class='short-spacer' *ngIf="slMetaInfo?.serviceMode"></span>
+      <fa-icon  [icon]="['fas', 'tools']" *ngIf="slMetaInfo?.serviceMode" title="Outdoor Panel is in Service Mode — all controls are disabled"></fa-icon>
+      <span class='short-spacer' *ngIf="slMetaInfo?.freezeMode===1"></span>
+      <fa-icon  [icon]="['fas', 'icicles']" *ngIf="slMetaInfo?.freezeMode===1" title="Pool is in Freeze Protect mode"></fa-icon>
+      <!-- <mat-icon *ngIf="slMetaInfo?.freezeMode===1" matTooltip="Pool is in Freeze Protect mode"  class="icon" aria-hidden="false" aria-label="Freeze Mode">ac_unit</mat-icon>-->
+      <span class='short-spacer' *ngIf="slMetaInfo?.activeAlarms >= 1"></span> 
       <mat-icon *ngIf="slMetaInfo?.activeAlarms >= 1" matTooltip="Active Alarms: {{slMetaInfo?.activeAlarms}}" matBadge="{{slMetaInfo?.activeAlarms}}" class="icon" aria-hidden="false" aria-label="Warning">warning</mat-icon>
       <span class='short-spacer'></span>
       <span>

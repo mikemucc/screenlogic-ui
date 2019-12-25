@@ -1,1 +1,35 @@
-<p>features works!</p>
+<mat-card class="featurescard">
+  <mat-card-header>
+    <div mat-card-avatar class="avatar">
+      <button
+        disableRipple="true"
+        mat-icon-button
+        aria-label="Features"
+        class="header-button"
+      >
+        <fa-icon
+          [icon]="['fas', 'toggle-on']"
+          title="Features"
+          size="2x"
+        ></fa-icon>
+      </button>
+    </div>
+    <mat-card-title>Features</mat-card-title>
+  </mat-card-header>
+  <mat-card-actions class="controlsrow">
+    <div *ngFor="let circuit of circuitsInfo">
+      <div *ngIf="circuit.interface === 2" class="control-button">
+        <mat-slide-toggle
+          (change)="toggle($event, circuit.circuitId)"
+          disableRipple="false"
+          name="{{ circuit.name }}"
+          color="primary"
+          checked="{{ circuit.active }}"
+        >
+        </mat-slide-toggle>
+        <br />
+        {{ circuit.name }}
+      </div>
+    </div>
+  </mat-card-actions>
+</mat-card>

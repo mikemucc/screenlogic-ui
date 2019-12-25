@@ -1,7 +1,9 @@
 <h3 class='heater-header'>Heater:</h3>
 <span>
+<button mat-icon-button aria-label="Heat minimum" class="header-button" (click)="directSetSetpoint(body.heater.setpoint?.min, body?.name)">{{body.heater.setpoint?.min}}</button>
+<span>
   <mat-slider
-    [(value)]=body.heater.setpoint.current
+    [(value)]=tempSliderValue
     (change)="tempSliderMoved($event, body?.name)"
     displayValue="Heater Setpoint"
     class="mat-slider"
@@ -14,11 +16,13 @@
     vertical="false"
   >
   </mat-slider>
+  <button mat-icon-button aria-label="Heat Maximum" class="header-button" (click)="directSetSetpoint(body.heater.setpoint?.max, body?.name)">{{body.heater.setpoint?.max}}</button>
   {{body.heater.tempScale}}
-<span class=temp-display>{{body.heater.setpoint?.current}}°{{body.tempScale}}</span>
+<span class=temp-display>{{tempSliderValue}}°{{body.tempScale}}</span>
 <span class="local-spacer"></span>
+</span>
 
-<mat-button-toggle-group #group='matButtonToggleGroup' (change)='heatModeToggle(body.name, group.value)'>
+<mat-button-toggle-group #group='matButtonToggleGroup' (change)='heatModeToggle(body.name, group.value)' class='heater-control-group'>
     <mat-button-toggle class='heater-toggle-button' checked='{{body.heater?.modeCode===0}}' value="0" aria-label="Heater Off">
       Off
     </mat-button-toggle>

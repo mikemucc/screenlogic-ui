@@ -1,28 +1,30 @@
-<mat-grid-list cols="2" rowHeight="300px" gutterSize="10px">
-  <mat-grid-tile *ngFor="let body of poolSpaInfo" colspan="1" rowspan="1">
+<mat-grid-list cols="4" rowHeight="25px" gutter="0px">
+  <mat-grid-tile *ngFor="let body of poolSpaInfo"  colspan="2" rowspan="12">
     <mat-card class="poolspa-card">
       <mat-card-header>
         <div mat-card-avatar class="avatar">
           <div *ngIf="body.name === 'pool'">
-            <button disableRipple='true' mat-icon-button aria-label="Power" class="header-button">
-            <mat-icon
+            <button disableRipple='true' mat-icon-button aria-label="Pool" class="header-button">
+              <fa-icon [icon]="['fas', 'swimming-pool']" title="Pool" [ngClass]="{ 'body-active': body.active }" size="2x"></fa-icon>
+              <!-- <mat-icon
               class="icon"
               [ngClass]="{ 'body-active': body.active }"
               aria-hidden="false"
               aria-label="Pool"
               >pool</mat-icon
-            >
+            > -->
             </button>
           </div>
           <div *ngIf="body.name === 'spa'">
-            <button disableRipple='true' mat-icon-button aria-label="Power" class="header-button">
-            <mat-icon
+            <button disableRipple='true' mat-icon-button aria-label="Hot Tub" class="header-button">
+              <fa-icon [icon]="['fas', 'hot-tub']" title="Hot Tub" [ngClass]="{ 'body-active': body.active }" size="2x"></fa-icon>
+              <!-- <mat-icon
               class="icon"
               [ngClass]="{ 'body-active': body.active }"
               aria-hidden="false"
               aria-label="Pool"
               >hot_tub</mat-icon
-            >
+            > -->
             </button>
           </div>
         </div>
@@ -36,24 +38,26 @@
         <div class="header-space"></div>
         <div class="header-space"></div>
         <button mat-icon-button disableRipple='true' aria-label="Heater Status" class="header-button">
-          <mat-icon
+          <fa-icon [icon]="['fas', 'fire']" title="Heater Mode: {{body.heater.activeType}}" [ngClass]="{ 'heater-active': body.heater.active }" size="lg"></fa-icon>
+          <!-- <mat-icon
             [ngClass]="{ 'heater-active': body.heater.active }"
             aria-hidden="false"
             aria-label="Heater Status"
             matTooltip="Heater Mode: {{body.heater.activeType}}"
             >whatshot</mat-icon
-          >
+          > -->
         </button>
         <div class="header-space"></div>
         <button mat-icon-button aria-label="Power" class="header-button">
-          <mat-icon
+          <fa-icon [icon]="['fas', 'power-off']" title='{{body.name | titlecase}} is {{body.active ? "running" : "not running"}}' [ngClass]="{ 'power-active': body.active }" size="lg" (click)="bodyPowerToggle(body.active, body.circuitId)"></fa-icon>
+          <!-- <mat-icon
             [ngClass]="{ 'power-active': body.active }"
             aria-hidden="false"
             aria-label="body-active"
             (click)="bodyPowerToggle(body.active, body.circuitId)"
             matTooltip='{{body.name | titlecase}} is {{body.active ? "running" : "not running"}}'
             >power_settings_new</mat-icon
-          >
+          > -->
         </button>
       </mat-card-header>
       <mat-card-actions class="actions-line">
@@ -81,8 +85,9 @@
       </mat-card-actions>
       <br />
       <mat-card-content>
-        <app-heater-controls [body]="body"></app-heater-controls>
+        <app-heater-controls [body]="body" [tempSliderValue]="body.heater.setpoint?.current"></app-heater-controls>
       </mat-card-content>
     </mat-card>
+
   </mat-grid-tile>
 </mat-grid-list>

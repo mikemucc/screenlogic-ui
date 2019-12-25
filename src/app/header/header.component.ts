@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SlApiAllResponse, SlMetaData, ScreenlogicApiService } from '../screenlogic-api.service';
+import { SlMetaData, ScreenlogicApiService } from '../screenlogic-api.service';
 
 
 @Component({

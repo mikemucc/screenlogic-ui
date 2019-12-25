@@ -163,7 +163,14 @@ export class ScreenlogicApiService {
       .put(url, mode, this.httpOptions)
   }
   changeCircuitStatus(circuit: Number, state: Number): Observable<any>{
-    const url = this.slApiUrl + '/' + circuit + '/' + state
+    const url = this.slApiUrl + '/circuit/' + circuit + '/' + state
+    console.log('Sending PUT to ' + url)
+    var returnmessage = this.http.put(url, '', this.httpOptions)
+    console.log(returnmessage)
+    return returnmessage
+  }
+  sendLightcommand(command: Number): Observable<any>{
+    const url = this.slApiUrl + '/lights/' + command
     console.log('Sending PUT to ' + url)
     var returnmessage = this.http.put(url, '', this.httpOptions)
     console.log(returnmessage)

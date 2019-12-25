@@ -11,13 +11,15 @@ import { MatSlideToggleChange } from '@angular/material';
 export class PoolSpaStatusComponent implements OnInit {
   poolSpaInfo : PoolSpaInfo[];
   circuitsInfo : ControllerConfigBodyArray[];
-  public bodyPowerToggle(newStateBool: Boolean, circuitId: Number) {
+  public bodyPowerToggle(currentStateBool: Boolean, circuitId: Number) {
     // console.log('Got BodyPower Event for '+ circuitId)
-    if(newStateBool){
-      var newState = 1
-    } else {
+    var newState: Number
+    if(currentStateBool){
       newState = 0
+    } else {
+      newState = 1
     }
+    this.poolSpaData.changeCircuitStatus(circuitId, newState).subscribe(response => {});
   }
   public toggle(event: MatSlideToggleChange, circuitId: Number) {
       if(event.checked){
@@ -32,8 +34,8 @@ export class PoolSpaStatusComponent implements OnInit {
   ) { }
 
   ngOnInit(  ) {
-    setInterval(() =>this.getPoolSpaInfo(), 2500);
-    setInterval(() =>this.getConfigCircuitsArray(), 2500);
+    setInterval(() =>this.getPoolSpaInfo(), 5000);
+    setInterval(() =>this.getConfigCircuitsArray(), 5000);
   }
   
   getPoolSpaInfo(): void {

@@ -1,1 +1,50 @@
-<p>lights works!</p>
+      <div>
+      <mat-card class="LightsCard">
+        <mat-card-header>
+            <div mat-card-avatar class="avatar">
+            <button disableRipple='true' mat-icon-button aria-label="Pool" class="header-button">
+                <fa-icon [icon]="['fas', 'lightbulb']" title="Lights" [ngClass]="{ 'light-avatar-on' : slMetaInfo?.lightsOn }" size="2x"></fa-icon>
+            </button>
+            </div>
+            <mat-card-title>Lights</mat-card-title>
+            <div class="spacer"></div>
+            <span class='lightbutton' *ngFor="let button of colorLightButtons">
+                <button  mat-raised-button color="primary" click=setLightOptions(button.commandInt)>{{button.text}}</button>
+            </span>
+            <div class="spacer"></div>
+            <button mat-icon-button aria-label="Power" class="header-button">
+                    <fa-icon [icon]="['fas', 'power-off']" title='' [ngClass]="{ 'power-active': slMetaInfo?.lightsOn }" size="lg" (click)="toggleLights(slMetaInfo?.lightsOn)"></fa-icon>
+                <!-- <mat-icon
+                  [ngClass]="{ 'power-active': slMetaInfo?.lightsOn }"
+                  aria-hidden="false"
+                  aria-label="body-active"
+                  (click)="toggleLights(slMetaInfo?.lightsOn)"
+                  matTooltip=''
+                  >power_settings_new</mat-icon
+                > -->
+              </button>
+            </mat-card-header>          
+            <mat-card-actions>
+                <!-- <div>
+                    <H5>
+                        Color Lights
+                    </H5>
+                    <span class='lightbutton' *ngFor="let button of colorLightButtons">
+                        <button  mat-raised-button color="primary" click=setLightOptions(button.commandInt)>{{button.text}}</button>
+                    </span>
+                </div> -->
+                <div>
+                    <h4>IntelliBrite</h4>
+                    <span class='intellibriteButton' *ngFor="let button of intelliBriteButtons">
+                    <button  *ngIf='button.visible' click=setLightOptions(button.commandInt)  mat-raised-button color="basic">{{button.text}}</button>
+                    </span>
+                </div>
+                <div>
+                    <h4>Solid Colors</h4>
+                    <span class='solidbutton' *ngFor="let button of solidButtons">
+                    <button *ngIf='button.visible' click=setLightOptions(button.commandInt)  mat-fab [style.background-color]="button.color"></button>
+                    </span>
+            </div>
+            </mat-card-actions>
+            </mat-card>
+        </div>
