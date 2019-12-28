@@ -26,6 +26,8 @@ export interface SlMetaData {
   serviceMode : Boolean
   freezeMode : Number
   tempScale: String
+  lightsOn: Boolean
+  cleanerDelay: Number
 }
 
 export interface PoolSpaInfo {
@@ -37,11 +39,18 @@ export interface PoolSpaInfo {
   airTemp: number
   tempScale: string
   heater: {
+    equipPresent: {
+      heater:	boolean
+      solar:	boolean
+      solarisheater:	boolean
+      cooler:	boolean
+    }
     modeCode: number
     mode: string
     active: false
     activeCode: number
     activeType: string
+    tempScale: string
     setpoint: {
       current: number
       min: number
@@ -106,7 +115,8 @@ export interface EquipmentConfig {
   providedIn: 'root',
 })
 export class ScreenlogicApiService {
-  private slApiUrl = environment.apiBaseUrl + '/api'
+  private slApiUrl = environment.apiBaseUrl
+
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
   }

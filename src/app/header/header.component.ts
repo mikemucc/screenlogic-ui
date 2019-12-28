@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    setInterval(() =>this.getMetaInfo(), 2500);
+    setInterval(() =>this.getMetaInfo(), 5000);
   }
 
   getMetaInfo(): void {
