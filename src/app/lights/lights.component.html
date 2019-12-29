@@ -9,7 +9,7 @@
             <mat-card-title>Lights</mat-card-title>
             <div class="spacer"></div>
             <span class='lightbutton' *ngFor="let button of colorLightButtons">
-                <button  mat-raised-button color="primary" click=setLightOptions(button.commandInt)>{{button.text}}</button>
+                <button  mat-raised-button color="primary" (click)='setLightOptions(button.commandInt)'>{{button.text}}</button>
             </span>
             <div class="spacer"></div>
             <button mat-icon-button aria-label="Power" class="header-button">
@@ -30,19 +30,19 @@
                         Color Lights
                     </H5>
                     <span class='lightbutton' *ngFor="let button of colorLightButtons">
-                        <button  mat-raised-button color="primary" click=setLightOptions(button.commandInt)>{{button.text}}</button>
+                        <button  mat-raised-button color="primary" (click)='setLightOptions(button.commandInt)'>{{button.text}}</button>
                     </span>
                 </div> -->
                 <div>
                     <h4>IntelliBrite</h4>
                     <span class='intellibriteButton' *ngFor="let button of intelliBriteButtons">
-                    <button  *ngIf='button.visible' click=setLightOptions(button.commandInt)  mat-raised-button color="basic">{{button.text}}</button>
+                    <button  *ngIf='button.visible' (click)='setLightOptions(button.commandInt)'  mat-raised-button color="basic">{{button.text}}</button>
                     </span>
                 </div>
                 <div>
                     <h4>Solid Colors</h4>
                     <span class='solidbutton' *ngFor="let button of solidButtons">
-                    <button *ngIf='button.visible' click=setLightOptions(button.commandInt)  mat-fab [style.background-color]="button.color"></button>
+                    <button *ngIf='button.visible' (click)='setLightOptions(button.commandInt)'  mat-fab [style.background-color]="button.color"></button>
                     </span>
             </div>
             </mat-card-actions>

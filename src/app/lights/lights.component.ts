@@ -15,7 +15,7 @@ export class LightsComponent implements OnInit {
   solidButtons = SOLIDCOLORBUTTONS;
   slMetaInfo: SlMetaData;
 
-  public setLightOptions(command: number){
+  public setLightOptions(command: any){
     this.slMetaData.sendLightcommand(command).subscribe(response => {});
   }
   public toggleLights(currentLightStatus: boolean){

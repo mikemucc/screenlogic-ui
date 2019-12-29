@@ -179,7 +179,7 @@ export class ScreenlogicApiService {
     console.log(returnmessage)
     return returnmessage
   }
-  sendLightcommand(command: Number): Observable<any>{
+  sendLightcommand(command: any): Observable<any>{
     const url = this.slApiUrl + '/lights/' + command
     console.log('Sending PUT to ' + url)
     var returnmessage = this.http.put(url, '', this.httpOptions)
