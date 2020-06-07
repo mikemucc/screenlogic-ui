@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ScreenlogicApiService, ControllerConfigBodyArray } from '../screenlogic-api.service';
-import { MatSlideToggleChange } from '@angular/material';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-features',

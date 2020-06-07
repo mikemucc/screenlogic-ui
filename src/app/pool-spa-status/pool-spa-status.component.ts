@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 // import { PoolSpaInfo } from '../poolSpaInfo';
 import { ScreenlogicApiService, ControllerConfigBodyArray, PoolSpaInfo } from '../screenlogic-api.service';
-import { MatSlideToggleChange } from '@angular/material';
+import { MatSlideToggleChange } from '@angular/material/slide-toggle';
 
 @Component({
   selector: 'app-pool-spa-status',
