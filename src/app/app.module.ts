@@ -16,27 +16,20 @@ import { CommonModule } from '@angular/common'
 
 // Material imports:
 import { MatCardModule } from '@angular/material/card'
-// import {CardModule} from 'primeng/card';
 import { MatButtonModule } from '@angular/material/button'
-// import {ButtonModule} from 'primeng/button';
 import { MatToolbarModule } from '@angular/material/toolbar'
-// import {ToolbarModule} from 'primeng/toolbar';
 import { MatIconModule } from '@angular/material/icon'
 // TODO: Replace with FontAwesome icons
 
 import { MatSliderModule } from '@angular/material/slider'
-// import {SliderModule} from 'primeng/slider';
 import { MatGridListModule } from '@angular/material/grid-list'
 //Imported via CSS
 import { MatSlideToggleModule } from '@angular/material/slide-toggle'
-// import {InputSwitchModule} from 'primeng/inputswitch';
 import { MatTooltipModule } from '@angular/material/tooltip'
-// import {TooltipModule} from 'primeng/tooltip';
 import { MatInputModule } from '@angular/material/input'
 import { MatFormFieldModule } from '@angular/material/form-field'
 
 import { MatButtonToggleModule } from '@angular/material/button-toggle'
-// import {SelectButtonModule} from 'primeng/selectbutton';
 import { MatBadgeModule } from '@angular/material/badge';
 
 //FontAwesome imports
